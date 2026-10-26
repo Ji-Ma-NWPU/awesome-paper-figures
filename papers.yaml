@@ -1,4 +1,4 @@
-# 论文与图片的唯一数据源。修改后运行 `python3 scripts/build_readme.py` 重新生成 README.md。
+# 论文与图片的唯一数据源。修改后运行 `python3 scripts/build_readme.py` 重新生成 README、论文页和画廊页。
 #
 # 图类型（type）可选值：
 #   teaser        Teaser / Figure 1
@@ -10,6 +10,7 @@
 #
 # 条目示例：
 # - id: llava-2023                      # 唯一标识，也是 figures/ 下的子目录名
+#   short: LLaVA                       # 可选，画廊里显示的简称
 #   title: Visual Instruction Tuning
 #   authors: Haotian Liu, Chunyuan Li, Qingyang Wu, Yong Jae Lee
 #   venue: NeurIPS 2023
@@ -24,6 +25,7 @@
 
 papers:
   - id: realvr-2026
+    short: ReaLVR
     title: "Rethinking Latent Visual Reasoning: Grounding Latent Reasoning in Visual Evidence"
     authors: Xi Xiao, Tianchen Zhao, Youngeun Kim, et al.
     venue: Preprint 2026
@@ -40,6 +42,7 @@ papers:
         comment: 两张注意力矩阵并排，用彩色括号标出 Visual / Question / Latent / Answer 分区，框线 + 箭头注释直接点出“弱读出 vs 强读出”，红蓝发散色标配合灰色因果掩码，信息密度高但不乱。
 
   - id: mob-2025
+    short: MoB
     title: "Why 1 + 1 < 1 in Visual Token Pruning: Beyond Naïve Integration via Multi-Objective Balanced Covering"
     authors: Yangfu Li, Hongjian Zhan, Tianyi Chen, Qi Liu, Yu-jie Xiong, Yue Lu
     venue: NeurIPS 2025
@@ -53,6 +56,7 @@ papers:
         comment: (a) 正负双向柱状图 + 浅色背景分区标注好坏，(b) 绿 / 蓝两组密度直方图区分强弱耦合，(c) 三个预算下的雷达图并在每个轴上标注紫色相对提升，层层递进地支撑“1+1<1”的论点。
 
   - id: deepscan-2026
+    short: DeepScan
     title: "DeepScan: A Training-Free Framework for Visually Grounded Reasoning in Large Vision-Language Models"
     authors: Yangfu Li, Hongjian Zhan, Jiawei Chen, Yuning Gong, Qi Liu, Yue Lu
     venue: CVPR 2026
@@ -69,6 +73,7 @@ papers:
         comment: 柱状图用深紫 / 浅紫 / 浅蓝区分 training-free / training-based / 通用模型，本方法加粗黑框突出，虚线箭头与灰色斜体注释说明“可扩展”和基座分组。
 
   - id: pflownet-2026
+    short: PFlowNet
     title: Perceptual Flow Network for Visually Grounded Reasoning
     authors: Yangfu Li, Yuning Gong, Hongjian Zhan, Teng Li, Yuanhuiyi Lyu, et al.
     venue: ICML 2026
