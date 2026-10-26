@@ -15,6 +15,8 @@ TYPES = {
     "table": "表格",
 }
 
+TLDR = {"motivation": "动机", "method": "方法", "result": "效果"}
+
 GRID_COLS = 3
 
 
@@ -56,6 +58,11 @@ def build_paper_page(p):
     out.append(f"- **发表**：{p.get('venue', '')}")
     out.append(f"- **链接**：{paper_links(p)}")
     out.append(f"- **收录日期**：{p.get('added', '')}\n")
+    tldr = [(label, p[key]) for key, label in TLDR.items() if p.get(key)]
+    if tldr:
+        out.append("## TL;DR\n")
+        out += [f"- **{label}**：{text}" for label, text in tldr]
+        out.append("")
     for fig in p.get("figures") or []:
         label = TYPES[fig["type"]]
         out.append(f'<a id="{fig_anchor(fig)}"></a>\n')

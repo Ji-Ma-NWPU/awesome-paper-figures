@@ -17,6 +17,9 @@
 #   paper: https://arxiv.org/abs/2304.08485
 #   code: https://github.com/haotian-liu/LLaVA   # 可选
 #   added: 2026-10-26
+#   motivation: ...                   # 可选，TL;DR：动机 / 方法 / 效果
+#   method: ...
+#   result: ...
 #   figures:
 #     - file: fig1.png                  # 位于 figures/llava-2023/fig1.png；暂无截图时省略
 #       caption: Figure 1
@@ -31,6 +34,9 @@ papers:
     venue: Preprint 2026
     paper: https://arxiv.org/abs/2609.34563
     added: 2026-10-26
+    motivation: 隐式视觉推理（LVR）中的 latent token 对“会改变正确答案的图像扰动”几乎不敏感（latent evidence-credit gap）：GRPO 只奖励最终答案，没有告诉 latent token 该保留什么视觉证据、哪些位置需要更强监督。
+    method: 提出 ReaLVR，直接在模型自己生成的 latent 轨迹上加视觉证据监督：对比正确答案与模型采样出的错误答案对各 latent token 的注意力，决定“在哪里”加强监督；对比相关与不匹配的视觉证据，决定“保留什么”。只在训练时使用，不改模型结构和推理流程。
+    result: Qwen2.5-VL-7B 上五项任务平均 63.7%，优于已有 LVR 方法；首次把隐式视觉推理训练扩展到 235B 规模。
     figures:
       - file: fig1.png
         caption: Figure 1
@@ -49,6 +55,9 @@ papers:
     paper: https://arxiv.org/abs/2505.10118
     code: https://github.com/YChenL/MoB
     added: 2026-10-26
+    motivation: 视觉 token 剪枝有两个目标：视觉保留（VP）和提示对齐（PA）。现有多目标方法用固定策略把两者揉在一起，结果并不比单目标方法好（1+1<1），原因是两个目标的相对重要性会随 prompt 与图像的耦合程度变化。
+    method: 基于 Hausdorff 距离推导出剪枝的首个闭式误差界，再用 ε-covering 理论刻画两个目标之间的权衡；据此提出免训练的 MoB，把剪枝重构为双目标覆盖问题，用贪心的“半径交换”把权衡转化为预算分配，复杂度随 token 数线性增长。
+    result: LLaVA-1.5-7B 只保留 11.1% 视觉 token 仍保持 96.4% 性能；LLaVA-Next-7B 加速 1.3–1.5×，性能几乎无损；可直接用于 Qwen2-VL 和 Video-LLaVA。
     figures:
       - file: fig1.png
         caption: Figure 1
@@ -62,6 +71,9 @@ papers:
     venue: CVPR 2026
     paper: https://arxiv.org/abs/2603.03857
     added: 2026-10-26
+    motivation: 现有 visually grounded reasoning 方法大多是自上而下的 coarse-to-fine：先在整张图上一次性框出完整证据区域再细化，容易被嘈杂背景（attention sink）和外观相似的物体（attention drift）带偏。
+    method: 提出免训练框架 DeepScan，模仿人“先找局部线索、再还原整体”的方式：Hierarchical Scanning 先在图像块上探索局部线索并多尺度提取证据，自下而上恢复目标；Refocusing 让 LVLM 与视觉专家协作调整证据视野；Evidence-Enhanced Reasoning 用混合证据记忆提供多粒度视图来作答。
+    result: Qwen2.5-VL-7B 在 V* 上达到 90.6%（+16.3%），无需训练即可迁移到不同架构，并扩展到 72B 模型。
     figures:
       - file: fig1.png
         caption: Figure 1
@@ -79,6 +91,9 @@ papers:
     venue: ICML 2026
     paper: https://arxiv.org/abs/2605.02730
     added: 2026-10-26
+    motivation: 现有方法用视觉专家（如 GroundingDINO）的几何先验作为强化学习奖励来约束推理轨迹，但预实验发现：专家标注偏向几何精度，对推理并非最优——框得最准的证据不一定最有助于答对题。
+    method: 提出 PFlowNet，把感知与推理解耦：模型先生成结构化的 perceptual flow（规划状态 + 一串 RoI 及其描述），再以此为条件作答；用变分强化学习结合多维奖励（质量 / 效能 / 几何）与邻域几何塑形，在专家先验附近探索更有利于推理的感知行为，并给出理论性能保证。
+    result: 基于 Qwen3-VL-8B，在 V* Bench（90.6%）和 MME-RealWorld-lite（67.0%）上刷新 SOTA，推理延迟和上下文长度也低于 agentic 方法。
     figures:
       - file: fig1.png
         caption: Figure 1
