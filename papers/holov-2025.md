@@ -13,163 +13,39 @@
 - **方法**：提出即插即用的 HoloV，从整体上下文角度重新考虑保留哪些 token：把图像划分为多个空间 crop，在 crop 之间自适应分配剪枝预算，并在 crop 内外重排高亮 token，使保留的 token 覆盖全局视觉上下文而不是只盯着显著区域。
 - **效果**：LLaVA-1.5 剪掉 88.9% 视觉 token 后仍保留 95.8% 性能；在多种 MLLM（LLaVA-NeXT、Qwen2.5-VL、视频模型）和剪枝率下优于 SOTA。
 
-<a id="figure-1"></a>
+## Figures
 
-## Figure 1
+<a id="figure-1"></a><b>Figure 1</b> · <a href="../gallery/teaser.md">Teaser / 概念示意图</a><br><img src="../figures/holov-2025/fig1.png" width="303"><br>💡 上下两行对比 FastV 与 HoloV 的剪枝流程，右侧直接展示保留下来的 token 和回答结果（Oishi ✗ vs Lay's ✓），带表情图标，生动直观。
 
-类型：[Teaser / 概念示意图](../gallery/teaser.md)
+<a id="figure-2"></a><b>Figure 2</b> · <a href="../gallery/plot.md">实验结果图</a><br><img src="../figures/holov-2025/fig2.png" width="662"><br>💡 四个小折线图展示性能随剪枝率变化，HoloV 绿线在高剪枝率下明显更稳，图例统一。
 
-<img src="../figures/holov-2025/fig1.png" width="800">
+<a id="figure-3"></a><b>Figure 3</b> · <a href="../gallery/visualization.md">可视化 / 定性结果</a><br><img src="../figures/holov-2025/fig3.png" width="669"><br>💡 左侧把图像块连线到对应语义词，右侧按 75% → 12.5% 逐步展示保留的 token，暗化被剪掉的区域，渐进式排版很直观。
 
-> 💡 上下两行对比 FastV 与 HoloV 的剪枝流程，右侧直接展示保留下来的 token 和回答结果（Oishi ✗ vs Lay's ✓），带表情图标，生动直观。
+<a id="figure-4"></a><b>Figure 4</b> · <a href="../gallery/visualization.md">可视化 / 定性结果</a><br><img src="../figures/holov-2025/fig4.png" width="669"><br>💡 注意力热力图与保留 token 可视化并排，FastV 扎堆、HoloV 分散的对比一目了然。
 
-<a id="figure-2"></a>
+<table><tr>
+<td width="50%" valign="top"><a id="figure-5"></a><b>Figure 5</b> · <a href="../gallery/plot.md">实验结果图</a><br><img src="../figures/holov-2025/fig5.png" width="180"><br>💡 累积分布曲线小图，说明 [CLS] 注意力高度集中，嵌在正文旁节省版面。</td>
+<td width="50%" valign="top"><a id="figure-6"></a><b>Figure 6</b> · <a href="../gallery/plot.md">实验结果图</a><br><img src="../figures/holov-2025/fig6.png" width="195"><br>💡 上下两个柱状图分别对比 FastV vs 随机、Global vs Local，柱顶标数值，浅色配色柔和。</td>
+</tr></table>
 
-## Figure 2
+<a id="figure-7"></a><b>Figure 7</b> · <a href="../gallery/framework.md">方法框架图 / Pipeline</a><br><img src="../figures/holov-2025/fig7.png" width="670"><br>💡 方法示意：左侧 Prioritize → Re-rank 两步，右侧网格展示按 crop 保留 token，黄 / 绿 / 蓝三种边框区分保留、crop 内、高注意力被丢弃的 token，底部图例清晰。
 
-类型：[实验结果图](../gallery/plot.md)
+<a id="figure-8"></a><b>Figure 8</b> · <a href="../gallery/plot.md">实验结果图</a><br><img src="../figures/holov-2025/fig8.png" width="662"><br>💡 2×4 小多图网格，统一坐标和图例，适合作为“多基准 × 多剪枝率”结果展示的模板。
 
-<img src="../figures/holov-2025/fig2.png" width="800">
+<a id="figure-9"></a><b>Figure 9</b> · <a href="../gallery/plot.md">实验结果图</a><br><img src="../figures/holov-2025/fig9.png" width="176"><br>💡 单基准补充曲线，与 Fig 8 风格一致。
 
-> 💡 四个小折线图展示性能随剪枝率变化，HoloV 绿线在高剪枝率下明显更稳，图例统一。
+<a id="figure-10"></a><b>Figure 10</b> · <a href="../gallery/visualization.md">可视化 / 定性结果</a><br><img src="../figures/holov-2025/fig10.png" width="669"><br>💡 4 行 × 多剪枝率的案例矩阵，FastV 用红框、HoloV 用青框标出关键目标，左侧竖排方法名，规整易比较。
 
-<a id="figure-3"></a>
+<a id="table-1"></a><b>Table 1</b> · <a href="../gallery/table.md">表格</a><br><img src="../figures/holov-2025/tab1.png" width="665"><br>💡 大型主结果表：灰色 Upper Bound 行 + 灰底分组标题（Retain N Tokens，绿色标剪枝率），最优值蓝色加粗，本方法行浅底色。
 
-## Figure 3
+<a id="table-2"></a><b>Table 2</b> · <a href="../gallery/table.md">表格</a><br><img src="../figures/holov-2025/tab2.png" width="368"><br>💡 视频 QA 小表，延续主表的分组和高亮风格。
 
-类型：[可视化 / 定性结果](../gallery/visualization.md)
+<a id="table-3"></a><b>Table 3</b> · <a href="../gallery/table.md">表格</a><br><img src="../figures/holov-2025/tab3.png" width="664"><br>💡 LLaVA-NeXT 结果表，与 Table 1 同一模板。
 
-<img src="../figures/holov-2025/fig3.png" width="800">
+<a id="table-4"></a><b>Table 4</b> · <a href="../gallery/table.md">表格</a><br><img src="../figures/holov-2025/tab4.png" width="664"><br>💡 效率表左右两组对称排列（66.7% / 90% 剪枝率），时间、显存、精度同表对比。
 
-> 💡 左侧把图像块连线到对应语义词，右侧按 75% → 12.5% 逐步展示保留的 token，暗化被剪掉的区域，渐进式排版很直观。
-
-<a id="figure-4"></a>
-
-## Figure 4
-
-类型：[可视化 / 定性结果](../gallery/visualization.md)
-
-<img src="../figures/holov-2025/fig4.png" width="800">
-
-> 💡 注意力热力图与保留 token 可视化并排，FastV 扎堆、HoloV 分散的对比一目了然。
-
-<a id="figure-5"></a>
-
-## Figure 5
-
-类型：[实验结果图](../gallery/plot.md)
-
-<img src="../figures/holov-2025/fig5.png" width="800">
-
-> 💡 累积分布曲线小图，说明 [CLS] 注意力高度集中，嵌在正文旁节省版面。
-
-<a id="figure-6"></a>
-
-## Figure 6
-
-类型：[实验结果图](../gallery/plot.md)
-
-<img src="../figures/holov-2025/fig6.png" width="800">
-
-> 💡 上下两个柱状图分别对比 FastV vs 随机、Global vs Local，柱顶标数值，浅色配色柔和。
-
-<a id="figure-7"></a>
-
-## Figure 7
-
-类型：[方法框架图 / Pipeline](../gallery/framework.md)
-
-<img src="../figures/holov-2025/fig7.png" width="800">
-
-> 💡 方法示意：左侧 Prioritize → Re-rank 两步，右侧网格展示按 crop 保留 token，黄 / 绿 / 蓝三种边框区分保留、crop 内、高注意力被丢弃的 token，底部图例清晰。
-
-<a id="figure-8"></a>
-
-## Figure 8
-
-类型：[实验结果图](../gallery/plot.md)
-
-<img src="../figures/holov-2025/fig8.png" width="800">
-
-> 💡 2×4 小多图网格，统一坐标和图例，适合作为“多基准 × 多剪枝率”结果展示的模板。
-
-<a id="figure-9"></a>
-
-## Figure 9
-
-类型：[实验结果图](../gallery/plot.md)
-
-<img src="../figures/holov-2025/fig9.png" width="800">
-
-> 💡 单基准补充曲线，与 Fig 8 风格一致。
-
-<a id="figure-10"></a>
-
-## Figure 10
-
-类型：[可视化 / 定性结果](../gallery/visualization.md)
-
-<img src="../figures/holov-2025/fig10.png" width="800">
-
-> 💡 4 行 × 多剪枝率的案例矩阵，FastV 用红框、HoloV 用青框标出关键目标，左侧竖排方法名，规整易比较。
-
-<a id="table-1"></a>
-
-## Table 1
-
-类型：[表格](../gallery/table.md)
-
-<img src="../figures/holov-2025/tab1.png" width="800">
-
-> 💡 大型主结果表：灰色 Upper Bound 行 + 灰底分组标题（Retain N Tokens，绿色标剪枝率），最优值蓝色加粗，本方法行浅底色。
-
-<a id="table-2"></a>
-
-## Table 2
-
-类型：[表格](../gallery/table.md)
-
-<img src="../figures/holov-2025/tab2.png" width="800">
-
-> 💡 视频 QA 小表，延续主表的分组和高亮风格。
-
-<a id="table-3"></a>
-
-## Table 3
-
-类型：[表格](../gallery/table.md)
-
-<img src="../figures/holov-2025/tab3.png" width="800">
-
-> 💡 LLaVA-NeXT 结果表，与 Table 1 同一模板。
-
-<a id="table-4"></a>
-
-## Table 4
-
-类型：[表格](../gallery/table.md)
-
-<img src="../figures/holov-2025/tab4.png" width="800">
-
-> 💡 效率表左右两组对称排列（66.7% / 90% 剪枝率），时间、显存、精度同表对比。
-
-<a id="table-5"></a>
-
-## Table 5
-
-类型：[表格](../gallery/table.md)
-
-<img src="../figures/holov-2025/tab5.png" width="800">
-
-> 💡 crop 数量消融小表，按剪枝率分组，最优值蓝色加粗。
-
-<a id="table-6"></a>
-
-## Table 6
-
-类型：[表格](../gallery/table.md)
-
-<img src="../figures/holov-2025/tab6.png" width="800">
-
-> 💡 Qwen2.5-VL 结果表，分组样式与主表一致。
+<table><tr>
+<td width="50%" valign="top"><a id="table-5"></a><b>Table 5</b> · <a href="../gallery/table.md">表格</a><br><img src="../figures/holov-2025/tab5.png" width="301"><br>💡 crop 数量消融小表，按剪枝率分组，最优值蓝色加粗。</td>
+<td width="50%" valign="top"><a id="table-6"></a><b>Table 6</b> · <a href="../gallery/table.md">表格</a><br><img src="../figures/holov-2025/tab6.png" width="388"><br>💡 Qwen2.5-VL 结果表，分组样式与主表一致。</td>
+</tr></table>
 

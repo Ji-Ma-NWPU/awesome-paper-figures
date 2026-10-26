@@ -3,6 +3,7 @@
 from pathlib import Path
 
 import yaml
+from PIL import Image
 
 ROOT = Path(__file__).resolve().parent.parent
 
@@ -17,6 +18,8 @@ TYPES = {
 TLDR = {"motivation": "动机", "method": "方法", "result": "效果"}
 
 GRID_COLS = 3
+MAX_WIDTH = 800
+SMALL = 420  # figures at most this wide are shown two per row
 
 
 def paper_links(p):
@@ -62,18 +65,42 @@ def build_paper_page(p):
         out.append("## TL;DR\n")
         out += [f"- **{label}**：{text}" for label, text in tldr]
         out.append("")
-    for fig in p.get("figures") or []:
-        label = TYPES[fig["type"]]
-        out.append(f'<a id="{fig_anchor(fig)}"></a>\n')
-        out.append(f"## {fig['caption']}\n")
-        out.append(f"类型：[{label}](../gallery/{fig['type']}.md)\n")
-        if fig.get("file"):
-            out.append(f'<img src="../figures/{p["id"]}/{fig["file"]}" width="800">\n')
+    out.append("## Figures\n")
+    figs = p.get("figures") or []
+    i = 0
+    while i < len(figs):
+        fig = figs[i]
+        nxt = figs[i + 1] if i + 1 < len(figs) else None
+        if nxt and display_width(p, fig) <= SMALL and display_width(p, nxt) <= SMALL:
+            out.append('<table><tr>')
+            out += [f'<td width="50%" valign="top">{fig_html(p, f)}</td>' for f in (fig, nxt)]
+            out.append('</tr></table>\n')
+            i += 2
         else:
-            out.append("📷 _截图待补_\n")
-        if fig.get("comment"):
-            out.append(f"> 💡 {fig['comment']}\n")
+            out.append(fig_html(p, fig) + "\n")
+            i += 1
     write(ROOT / "papers" / f"{p['id']}.md", out)
+
+
+def display_width(p, fig):
+    """Show figures at their natural size (crops are 200 dpi) instead of stretching small ones."""
+    if not fig.get("file"):
+        return MAX_WIDTH
+    with Image.open(ROOT / "figures" / p["id"] / fig["file"]) as im:
+        return min(MAX_WIDTH, round(im.width * 0.6))
+
+
+def fig_html(p, fig):
+    label = TYPES[fig["type"]]
+    parts = [f'<a id="{fig_anchor(fig)}"></a><b>{fig["caption"]}</b> · '
+             f'<a href="../gallery/{fig["type"]}.md">{label}</a><br>']
+    if fig.get("file"):
+        parts.append(f'<img src="../figures/{p["id"]}/{fig["file"]}" width="{display_width(p, fig)}"><br>')
+    else:
+        parts.append("📷 <i>截图待补</i><br>")
+    if fig.get("comment"):
+        parts.append(f"💡 {fig['comment']}")
+    return "".join(parts)
 
 
 def build_gallery_page(t, items):
@@ -101,7 +128,7 @@ def build_readme(papers, by_type):
         "# Awesome Paper Figures\n",
         "个人收藏：图画得好的论文，方便画图时找参考。\n",
         "- 数据源：[`papers.yaml`](papers.yaml)，图片存放在 `figures/<paper-id>/`",
-        "- 修改后运行 `python3 scripts/build_readme.py` 重新生成 README、论文页和画廊页（请勿手动编辑生成的文件）\n",
+        "- 修改后运行 `python3 scripts/build_readme.py` 重新生成 README、论文页和画廊页（依赖 `pyyaml`、`pillow`；请勿手动编辑生成的文件）\n",
         f"共收录 **{len(papers)}** 篇论文，**{n_figs}** 张图。\n",
         "## 按图类型浏览\n",
     ]
