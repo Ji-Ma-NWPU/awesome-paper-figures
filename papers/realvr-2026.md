@@ -17,5 +17,7 @@
 
 <a id="figure-1"></a><b>Figure 1</b> · <a href="../gallery/teaser.md">Teaser / 概念示意图</a><br><img src="../figures/realvr-2026/fig1.png" width="704"><br>💡 三栏 (a) 真实案例 + 红框放大细节、(b) LVR / ReaLVR 两行流程对比、(c) 横向条形量化证据，一张图讲完动机、方法与结论；蓝 / 粉两色分别对应 what / where，配色与正文呼应。
 
+<a id="figure-2"></a><b>Figure 2</b> · <a href="../gallery/framework.md">方法框架图 / Pipeline</a><br><img src="../figures/realvr-2026/fig2.png" width="662"><br>💡 方法框架图：底部是 [Image] [Question] [Free-running latent rollout] [Answer] 的彩色 token 序列，上方左右两支分别是“视觉对比损失”（蓝框 Relevant ROI vs 红框 Mismatched ROI）与“答案对比”（Correct vs Wrong answer），用黄色虚线框统一标出“仅训练时使用”的部分，左上小机器人 + 气泡增加亲和力，底部配输入示例和 token 图例。
+
 <a id="figure-3"></a><b>Figure 3</b> · <a href="../gallery/visualization.md">可视化 / 定性结果</a><br><img src="../figures/realvr-2026/fig3.png" width="704"><br>💡 两张注意力矩阵并排，用彩色括号标出 Visual / Question / Latent / Answer 分区，框线 + 箭头注释直接点出“弱读出 vs 强读出”，红蓝发散色标配合灰色因果掩码，信息密度高但不乱。
 
