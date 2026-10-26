@@ -124,27 +124,3 @@ papers:
         caption: Figure 11
         type: concept
         comment: 三种范式对比：(a) Agentic、(b) Grounded RLVR、(c) PFlowNet，每行都是“输入 → VLM → 推理过程 → 结论”，右侧用 ⚠️ / 💡 卡片总结优缺点，底部统一图例，排版整齐。
-      - file: fig12.png
-        caption: Figure 12
-        type: concept
-        comment: 用带位置 ID 的注意力掩码网格解释并行计算：浅紫阴影为可见区域，黑框标出各项概率对应的 token 块，右侧箭头连到公式，把实现细节画得一目了然。
-      - file: fig13.png
-        caption: Figure 13
-        type: concept
-        comment: 与 Fig 12 同一视觉语言，用粗黑线把矩阵分成四个区块，展示效率奖励的并行计算，适合作为“讲清楚 attention mask”类插图的参考。
-      - file: fig14.png
-        caption: Figure 14
-        type: visualization
-        comment: 按 benchmark 分组的大图拼贴，蓝框 / 红框分别表示 TreeVGR 与 PFlowNet 的 grounding 结果，并用白色虚线放大局部，直观呈现预测多样性的差异。
-      - file: fig15.png
-        caption: Figure 15
-        type: visualization
-        comment: 失败案例分析：左图右文，Question 卡片 + 紫色 PFlowNet 标签卡片 + 思考过程卡片竖排，✓ / ✗ 图标精确标在出错的步骤上。
-      - file: fig16.png
-        caption: Figure 16
-        type: visualization
-        comment: 三方法纵向对比的案例卡片：黑底标签标出 baseline、紫底标签标出本方法，红色斜体标注错误类型（Language Bias / Missing Evidence），左侧配对应的 grounding 结果图。
-      - file: fig17.png
-        caption: Figure 17
-        type: visualization
-        comment: 与 Fig 16 同一模板的地图案例，红色错误类型标签（Hallucination / Language Bias）与下划线关键推理句组合，可作为定性案例图的排版模板。
