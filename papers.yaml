@@ -1,0 +1,25 @@
+# 论文与图片的唯一数据源。修改后运行 `python3 scripts/build_readme.py` 重新生成 README.md。
+#
+# 图类型（type）可选值：
+#   teaser        Teaser / Figure 1
+#   framework     方法框架图 / Pipeline
+#   concept       概念示意图 / Motivation
+#   plot          实验结果图（曲线、柱状图等）
+#   visualization 可视化 / 定性结果（注意力图、案例等）
+#   table         表格
+#
+# 条目示例：
+# - id: llava-2023                      # 唯一标识，也是 figures/ 下的子目录名
+#   title: Visual Instruction Tuning
+#   authors: Haotian Liu, Chunyuan Li, Qingyang Wu, Yong Jae Lee
+#   venue: NeurIPS 2023
+#   paper: https://arxiv.org/abs/2304.08485
+#   code: https://github.com/haotian-liu/LLaVA   # 可选
+#   added: 2026-10-26
+#   figures:
+#     - file: fig1.png                  # 位于 figures/llava-2023/fig1.png
+#       caption: Figure 1
+#       type: framework
+#       comment: 布局简洁，数据流方向清晰，配色克制。
+
+papers: []
