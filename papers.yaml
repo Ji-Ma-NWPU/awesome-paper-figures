@@ -138,3 +138,169 @@ papers:
         caption: Figure 11
         type: teaser
         comment: 三种范式对比：(a) Agentic、(b) Grounded RLVR、(c) PFlowNet，每行都是“输入 → VLM → 推理过程 → 结论”，右侧用 ⚠️ / 💡 卡片总结优缺点，底部统一图例，排版整齐。
+
+  - id: memvr-2025
+    short: MemVR
+    title: "Look Twice Before You Answer: Memory-Space Visual Retracing for Hallucination Mitigation in Multimodal Large Language Models"
+    authors: Xin Zou, Yizhou Wang, Yibo Yan, Yuanhuiyi Lyu, Kening Zheng, et al.
+    venue: ICML 2025
+    paper: https://arxiv.org/abs/2410.03577
+    code: https://github.com/1zhou-Wang/MemVR
+    added: 2026-10-26
+    motivation: MLLM 的幻觉常源于文本解码器在生成过程中逐渐“遗忘”视觉信息；VCD 等对比解码方法需要多次前向，推理慢且会损伤通用能力。
+    method: 提出 MemVR，模仿人“记不清就再看一眼”：推理时监测各层的不确定性，当不确定性过高时，在中间触发层把视觉 token 作为 key-value 记忆经 FFN 重新注入（look-twice），不改模型、不需训练。
+    result: 在 POPE、CHAIR、HallusionBench 等幻觉基准上显著降低幻觉，同时在 MME、MM-Vet 等通用基准上也有提升，推理开销与贪心解码几乎相同。
+    figures:
+      - file: fig1.png
+        caption: Figure 1
+        type: teaser
+        comment: 左右对比 VCD 与 MemVR 两种范式：层堆叠示意 + 小柱状图表示输出分布，底部用“乌龟 / 飞机”图标对比推理速度，一眼看出差异。
+      - file: fig2.png
+        caption: Figure 2
+        type: plot
+        comment: 两张雷达图分别展示多基准总分与 MME 子项，MemVR 用最外圈绿色粗线包住其他方法，轴上直接标数值。
+      - file: fig3.png
+        caption: Figure 3
+        type: visualization
+        comment: 原图 + 逐 token × 逐层不确定性热力图，用圆角框圈出高不确定性的 token，绿色单色渐变干净统一。
+      - file: fig4.png
+        caption: Figure 4
+        type: plot
+        comment: 折线 + 柱状两个小图并排，实线 / 虚线区分 text / image 特征缩放，配色与图例简洁。
+      - file: fig5.png
+        caption: Figure 5
+        type: visualization
+        comment: 与 Fig 3 同一样式，展示“山竹”问题中不确定性在关键 token 上的跳变，适合作为“token × layer 热力图”的参考。
+      - file: fig6.png
+        caption: Figure 6
+        type: plot
+        comment: 带误差棒和散点的柱状图 + 小提琴 / 箱线组合图，既给均值也展示分布。
+      - file: fig7.png
+        caption: Figure 7
+        type: plot
+        comment: 双 y 轴的超参敏感性分析：左图柱 + 折线，右图面积 + 折线，虚线标出默认取值。
+      - file: fig8.png
+        caption: Figure 8
+        type: visualization
+        comment: 把各层不确定性画成一行数字格子，红框标出触发层，前后两行对比 MemVR 触发前后的变化，右侧图标标出答案对错。
+      - file: fig9.png
+        caption: Figure 9
+        type: visualization
+        comment: 长文本生成案例：左图右文，绿色 / 红色文字分别标正确与幻觉内容，带下划线的数值一目了然。
+      - file: tab1.png
+        caption: Table 1
+        type: table
+        comment: 效率对比表，每个数值后附小号的相对倍数（×1.04），最优 / 次优用绿 / 蓝底色高亮。
+      - file: tab2.png
+        caption: Table 2
+        type: table
+        comment: 方法特性对比表：隔行浅灰底 + 绿 ✓ / 红 ✗，把相关工作的差异总结得很清楚。
+      - file: tab3.png
+        caption: Table 3
+        type: table
+        comment: 每个数字后跟彩色小箭头和增量（绿降红升），最优结果绿底高亮，本方法行用横线隔开。
+      - file: tab4.png
+        caption: Table 4
+        type: table
+        comment: 多数据集 × 多设置的大表，用多级表头和分组，增量小字 + 绿底高亮保持整洁。
+      - file: tab5.png
+        caption: Table 5
+        type: table
+        comment: 与 Table 3 同风格的小表，保持全文表格样式一致。
+      - file: tab6.png
+        caption: Table 6
+        type: table
+        comment: 同一模板的 LLaVA-Bench 结果表。
+      - file: tab7.png
+        caption: Table 7
+        type: table
+        comment: 同一模板的 MM-Vet 结果表。
+      - file: tab8.png
+        caption: Table 8
+        type: table
+        comment: 多模型 × 多基准的综合表，多级表头 + 竖线分组，增量标注风格统一。
+      - file: tab9.png
+        caption: Table 9
+        type: table
+        comment: 极简的变体对比小表。
+      - file: tab10.png
+        caption: Table 10
+        type: table
+        comment: 策略消融小表，最优值绿底高亮。
+
+  - id: holov-2025
+    short: HoloV
+    title: "Don't Just Chase \"Highlighted Tokens\" in MLLMs: Revisiting Visual Holistic Context Retention"
+    authors: Xin Zou, Di Lu, Yizhou Wang, Yibo Yan, Yuanhuiyi Lyu, et al.
+    venue: NeurIPS 2025
+    paper: https://arxiv.org/abs/2510.02912
+    code: https://github.com/obananas/HoloV
+    added: 2026-10-26
+    motivation: 现有视觉 token 剪枝多是“注意力优先”（按文本-视觉交叉注意力或 [CLS] 注意力保留高亮 token），但这些 token 往往语义相似、扎堆在少数区域，高剪枝率下性能断崖式下降。
+    method: 提出即插即用的 HoloV，从整体上下文角度重新考虑保留哪些 token：把图像划分为多个空间 crop，在 crop 之间自适应分配剪枝预算，并在 crop 内外重排高亮 token，使保留的 token 覆盖全局视觉上下文而不是只盯着显著区域。
+    result: LLaVA-1.5 剪掉 88.9% 视觉 token 后仍保留 95.8% 性能；在多种 MLLM（LLaVA-NeXT、Qwen2.5-VL、视频模型）和剪枝率下优于 SOTA。
+    figures:
+      - file: fig1.png
+        caption: Figure 1
+        type: teaser
+        comment: 上下两行对比 FastV 与 HoloV 的剪枝流程，右侧直接展示保留下来的 token 和回答结果（Oishi ✗ vs Lay's ✓），带表情图标，生动直观。
+      - file: fig2.png
+        caption: Figure 2
+        type: plot
+        comment: 四个小折线图展示性能随剪枝率变化，HoloV 绿线在高剪枝率下明显更稳，图例统一。
+      - file: fig3.png
+        caption: Figure 3
+        type: visualization
+        comment: 左侧把图像块连线到对应语义词，右侧按 75% → 12.5% 逐步展示保留的 token，暗化被剪掉的区域，渐进式排版很直观。
+      - file: fig4.png
+        caption: Figure 4
+        type: visualization
+        comment: 注意力热力图与保留 token 可视化并排，FastV 扎堆、HoloV 分散的对比一目了然。
+      - file: fig5.png
+        caption: Figure 5
+        type: plot
+        comment: 累积分布曲线小图，说明 [CLS] 注意力高度集中，嵌在正文旁节省版面。
+      - file: fig6.png
+        caption: Figure 6
+        type: plot
+        comment: 上下两个柱状图分别对比 FastV vs 随机、Global vs Local，柱顶标数值，浅色配色柔和。
+      - file: fig7.png
+        caption: Figure 7
+        type: framework
+        comment: 方法示意：左侧 Prioritize → Re-rank 两步，右侧网格展示按 crop 保留 token，黄 / 绿 / 蓝三种边框区分保留、crop 内、高注意力被丢弃的 token，底部图例清晰。
+      - file: fig8.png
+        caption: Figure 8
+        type: plot
+        comment: 2×4 小多图网格，统一坐标和图例，适合作为“多基准 × 多剪枝率”结果展示的模板。
+      - file: fig9.png
+        caption: Figure 9
+        type: plot
+        comment: 单基准补充曲线，与 Fig 8 风格一致。
+      - file: fig10.png
+        caption: Figure 10
+        type: visualization
+        comment: 4 行 × 多剪枝率的案例矩阵，FastV 用红框、HoloV 用青框标出关键目标，左侧竖排方法名，规整易比较。
+      - file: tab1.png
+        caption: Table 1
+        type: table
+        comment: 大型主结果表：灰色 Upper Bound 行 + 灰底分组标题（Retain N Tokens，绿色标剪枝率），最优值蓝色加粗，本方法行浅底色。
+      - file: tab2.png
+        caption: Table 2
+        type: table
+        comment: 视频 QA 小表，延续主表的分组和高亮风格。
+      - file: tab3.png
+        caption: Table 3
+        type: table
+        comment: LLaVA-NeXT 结果表，与 Table 1 同一模板。
+      - file: tab4.png
+        caption: Table 4
+        type: table
+        comment: 效率表左右两组对称排列（66.7% / 90% 剪枝率），时间、显存、精度同表对比。
+      - file: tab5.png
+        caption: Table 5
+        type: table
+        comment: crop 数量消融小表，按剪枝率分组，最优值蓝色加粗。
+      - file: tab6.png
+        caption: Table 6
+        type: table
+        comment: Qwen2.5-VL 结果表，分组样式与主表一致。
