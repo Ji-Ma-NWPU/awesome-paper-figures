@@ -7,9 +7,8 @@ import yaml
 ROOT = Path(__file__).resolve().parent.parent
 
 TYPES = {
-    "teaser": "Teaser / Figure 1",
+    "teaser": "Teaser / 概念示意图",
     "framework": "方法框架图 / Pipeline",
-    "concept": "概念示意图 / Motivation",
     "plot": "实验结果图",
     "visualization": "可视化 / 定性结果",
     "table": "表格",

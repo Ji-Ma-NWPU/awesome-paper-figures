@@ -1,9 +1,8 @@
 # 论文与图片的唯一数据源。修改后运行 `python3 scripts/build_readme.py` 重新生成 README、论文页和画廊页。
 #
 # 图类型（type）可选值：
-#   teaser        Teaser / Figure 1
+#   teaser        Teaser / 概念示意图（Figure 1、Motivation、范式对比等）
 #   framework     方法框架图 / Pipeline
-#   concept       概念示意图 / Motivation
 #   plot          实验结果图（曲线、柱状图等）
 #   visualization 可视化 / 定性结果（注意力图、案例等）
 #   table         表格
@@ -77,7 +76,7 @@ papers:
     figures:
       - file: fig1.png
         caption: Figure 1
-        type: concept
+        type: teaser
         comment: 用同一张卡通海狸示例左右对比 coarse-to-fine 与 bottom-up 两条 pipeline，失败分支半透明淡化、✗ / ✓ 图标标出成败，手绘风插图比真实图片更干净易懂。
       - file: fig2.png
         caption: Figure 2
@@ -101,7 +100,7 @@ papers:
         comment: 左侧用“原图 → 黄金证据 → 扩展 → 专家标注”的递进裁剪示意精度并非越高越好，右侧两条折线配置信带给出量化证据；绿 ✓ / 红 ✗ 角标与金色 Golden Priors 高亮串联图文。
       - file: fig2.png
         caption: Figure 2
-        type: concept
+        type: teaser
         comment: 把隐空间画成一张 3D 曲面，对比“被专家轨迹拉偏 (Biased)”与“在邻域内向最优输出靠拢 (Closer)”，金色 / 紫色轨迹 + 力的箭头把抽象优化目标变成直观的几何图景。
       - file: fig3.png
         caption: Figure 3
@@ -137,5 +136,5 @@ papers:
         comment: 2×4 训练曲线网格：上排对比不同正则方案，下排扫描 ε 与 λ，分别用紫色与蓝色渐变表示超参从小到大，色彩即图例。
       - file: fig11.png
         caption: Figure 11
-        type: concept
+        type: teaser
         comment: 三种范式对比：(a) Agentic、(b) Grounded RLVR、(c) PFlowNet，每行都是“输入 → VLM → 推理过程 → 结论”，右侧用 ⚠️ / 💡 卡片总结优缺点，底部统一图例，排版整齐。

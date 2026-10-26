@@ -17,7 +17,7 @@
 
 ## Figure 1
 
-类型：[Teaser / Figure 1](../gallery/teaser.md)
+类型：[Teaser / 概念示意图](../gallery/teaser.md)
 
 <img src="../figures/pflownet-2026/fig1.png" width="800">
 
@@ -27,7 +27,7 @@
 
 ## Figure 2
 
-类型：[概念示意图 / Motivation](../gallery/concept.md)
+类型：[Teaser / 概念示意图](../gallery/teaser.md)
 
 <img src="../figures/pflownet-2026/fig2.png" width="800">
 
@@ -117,7 +117,7 @@
 
 ## Figure 11
 
-类型：[概念示意图 / Motivation](../gallery/concept.md)
+类型：[Teaser / 概念示意图](../gallery/teaser.md)
 
 <img src="../figures/pflownet-2026/fig11.png" width="800">
 

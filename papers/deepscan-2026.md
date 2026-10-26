@@ -17,7 +17,7 @@
 
 ## Figure 1
 
-类型：[概念示意图 / Motivation](../gallery/concept.md)
+类型：[Teaser / 概念示意图](../gallery/teaser.md)
 
 <img src="../figures/deepscan-2026/fig1.png" width="800">
 

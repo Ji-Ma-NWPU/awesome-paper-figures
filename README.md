@@ -9,7 +9,7 @@
 
 ## 按图类型浏览
 
-[Teaser / Figure 1](gallery/teaser.md) (3) · [方法框架图 / Pipeline](gallery/framework.md) (2) · [概念示意图 / Motivation](gallery/concept.md) (3) · [实验结果图](gallery/plot.md) (6) · [可视化 / 定性结果](gallery/visualization.md) (2) · [表格](gallery/table.md) (0)
+[Teaser / 概念示意图](gallery/teaser.md) (6) · [方法框架图 / Pipeline](gallery/framework.md) (2) · [实验结果图](gallery/plot.md) (6) · [可视化 / 定性结果](gallery/visualization.md) (2) · [表格](gallery/table.md) (0)
 
 ## 按论文浏览
 
