@@ -46,7 +46,7 @@ def main():
             t = fig.get("type")
             if t not in TYPES:
                 raise SystemExit(f"{p['id']}: unknown figure type {t!r}")
-            if not (ROOT / "figures" / p["id"] / fig["file"]).exists():
+            if fig.get("file") and not (ROOT / "figures" / p["id"] / fig["file"]).exists():
                 raise SystemExit(f"{p['id']}: missing figures/{p['id']}/{fig['file']}")
             by_type[t].append((p, fig))
 
@@ -76,7 +76,10 @@ def main():
         for p, fig in by_type[t]:
             out.append(f"### {p['title']} — {fig.get('caption', '')}\n")
             out.append(f"*{p.get('venue', '')}* · {paper_link(p)}\n")
-            out.append(f'<img src="figures/{p["id"]}/{fig["file"]}" width="800">\n')
+            if fig.get("file"):
+                out.append(f'<img src="figures/{p["id"]}/{fig["file"]}" width="800">\n')
+            else:
+                out.append("📷 _截图待补_\n")
             if fig.get("comment"):
                 out.append(f"> 💡 {fig['comment']}\n")
 

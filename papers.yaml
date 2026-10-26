@@ -17,9 +17,62 @@
 #   code: https://github.com/haotian-liu/LLaVA   # 可选
 #   added: 2026-10-26
 #   figures:
-#     - file: fig1.png                  # 位于 figures/llava-2023/fig1.png
+#     - file: fig1.png                  # 位于 figures/llava-2023/fig1.png；暂无截图时省略
 #       caption: Figure 1
 #       type: framework
 #       comment: 布局简洁，数据流方向清晰，配色克制。
 
-papers: []
+papers:
+  - id: realvr-2026
+    title: "Rethinking Latent Visual Reasoning: Grounding Latent Reasoning in Visual Evidence"
+    authors: Xi Xiao, Tianchen Zhao, Youngeun Kim, et al.
+    venue: Preprint 2026
+    paper: https://arxiv.org/abs/2609.34563
+    added: 2026-10-26
+    figures:
+      - caption: Figure 1
+        type: teaser
+        comment: (a)(b)(c) 三栏依次给出真实案例、训练思路（what / where）和量化证据，一张图讲完动机、方法和结论。
+      - caption: Figure 3
+        type: visualization
+        comment: LVR 与 ReaLVR 的注意力矩阵并排对比，用框线标出关键读出区域，配合因果掩码的灰色三角，差异一目了然。
+
+  - id: mob-2025
+    title: "Why 1 + 1 < 1 in Visual Token Pruning: Beyond Naïve Integration via Multi-Objective Balanced Covering"
+    authors: Yangfu Li, Hongjian Zhan, Tianyi Chen, Qi Liu, Yu-jie Xiong, Yue Lu
+    venue: NeurIPS 2025
+    paper: https://arxiv.org/abs/2505.10118
+    code: https://github.com/YChenL/MoB
+    added: 2026-10-26
+    figures:
+      - caption: Figure 1
+        type: teaser
+        comment: 相对性能对比、prompt-visual 耦合分布和多预算雷达图组合在一起，把“问题现象 → 关键观察 → 方法收益”串成一条线。
+
+  - id: deepscan-2026
+    title: "DeepScan: A Training-Free Framework for Visually Grounded Reasoning in Large Vision-Language Models"
+    authors: Yangfu Li, Hongjian Zhan, Jiawei Chen, Yuning Gong, Qi Liu, Yue Lu
+    venue: CVPR 2026
+    paper: https://arxiv.org/abs/2603.03857
+    added: 2026-10-26
+    figures:
+      - caption: Figure 1
+        type: concept
+        comment: 用同一个问题左右对比 coarse-to-fine 和 bottom-up 两种 pipeline，自上而下与自下而上的流程差异直观。
+      - caption: Figure 2
+        type: plot
+        comment: V* 上与各类 LVLM / grounded reasoning 方法的性能对比，并标出可扩展到更大模型。
+
+  - id: pflownet-2026
+    title: Perceptual Flow Network for Visually Grounded Reasoning
+    authors: Yangfu Li, Yuning Gong, Hongjian Zhan, Teng Li, Yuanhuiyi Lyu, et al.
+    venue: ICML 2026
+    paper: https://arxiv.org/abs/2605.02730
+    added: 2026-10-26
+    figures:
+      - caption: Figure 2
+        type: concept
+        comment: 在潜空间中画出可行区域，对比“模仿专家轨迹”与“推理导向 + 邻域几何约束”两种优化方向，把抽象的目标函数可视化。
+      - caption: Figure 6
+        type: plot
+        comment: 用 Score / Latency / Context 三轴图同时比较性能与开销，面积越小代价越低，读图规则简单。
