@@ -33,17 +33,17 @@
 
 *Preprint 2026* · [Paper](https://arxiv.org/abs/2609.34563)
 
-📷 _截图待补_
+<img src="figures/realvr-2026/fig1.png" width="800">
 
-> 💡 (a)(b)(c) 三栏依次给出真实案例、训练思路（what / where）和量化证据，一张图讲完动机、方法和结论。
+> 💡 三栏 (a) 真实案例 + 红框放大细节、(b) LVR / ReaLVR 两行流程对比、(c) 横向条形量化证据，一张图讲完动机、方法与结论；蓝 / 粉两色分别对应 what / where，配色与正文呼应。
 
 ### Why 1 + 1 < 1 in Visual Token Pruning: Beyond Naïve Integration via Multi-Objective Balanced Covering — Figure 1
 
 *NeurIPS 2025* · [Paper](https://arxiv.org/abs/2505.10118) · [Code](https://github.com/YChenL/MoB)
 
-📷 _截图待补_
+<img src="figures/mob-2025/fig1.png" width="800">
 
-> 💡 相对性能对比、prompt-visual 耦合分布和多预算雷达图组合在一起，把“问题现象 → 关键观察 → 方法收益”串成一条线。
+> 💡 (a) 正负双向柱状图 + 浅色背景分区标注好坏，(b) 绿 / 蓝两组密度直方图区分强弱耦合，(c) 三个预算下的雷达图并在每个轴上标注紫色相对提升，层层递进地支撑“1+1<1”的论点。
 
 ## 方法框架图 / Pipeline
 
@@ -55,17 +55,17 @@ _暂无_
 
 *CVPR 2026* · [Paper](https://arxiv.org/abs/2603.03857)
 
-📷 _截图待补_
+<img src="figures/deepscan-2026/fig1.png" width="800">
 
-> 💡 用同一个问题左右对比 coarse-to-fine 和 bottom-up 两种 pipeline，自上而下与自下而上的流程差异直观。
+> 💡 用同一张卡通海狸示例左右对比 coarse-to-fine 与 bottom-up 两条 pipeline，失败分支半透明淡化、✗ / ✓ 图标标出成败，手绘风插图比真实图片更干净易懂。
 
 ### Perceptual Flow Network for Visually Grounded Reasoning — Figure 2
 
 *ICML 2026* · [Paper](https://arxiv.org/abs/2605.02730)
 
-📷 _截图待补_
+<img src="figures/pflownet-2026/fig2.png" width="800">
 
-> 💡 在潜空间中画出可行区域，对比“模仿专家轨迹”与“推理导向 + 邻域几何约束”两种优化方向，把抽象的目标函数可视化。
+> 💡 把隐空间画成一张 3D 曲面，对比“被专家轨迹拉偏 (Biased)”与“在邻域内向最优输出靠拢 (Closer)”，金色 / 紫色轨迹 + 力的箭头把抽象优化目标变成直观的几何图景。
 
 ## 实验结果图
 
@@ -73,17 +73,17 @@ _暂无_
 
 *CVPR 2026* · [Paper](https://arxiv.org/abs/2603.03857)
 
-📷 _截图待补_
+<img src="figures/deepscan-2026/fig2.png" width="800">
 
-> 💡 V* 上与各类 LVLM / grounded reasoning 方法的性能对比，并标出可扩展到更大模型。
+> 💡 柱状图用深紫 / 浅紫 / 浅蓝区分 training-free / training-based / 通用模型，本方法加粗黑框突出，虚线箭头与灰色斜体注释说明“可扩展”和基座分组。
 
 ### Perceptual Flow Network for Visually Grounded Reasoning — Figure 6
 
 *ICML 2026* · [Paper](https://arxiv.org/abs/2605.02730)
 
-📷 _截图待补_
+<img src="figures/pflownet-2026/fig6.png" width="800">
 
-> 💡 用 Score / Latency / Context 三轴图同时比较性能与开销，面积越小代价越低，读图规则简单。
+> 💡 共享横轴的上下镜像柱状图：上方是分数，下方是延迟和上下文长度，“下方面积越小代价越低”的读法一目了然；各方法用 logo 图标代替图例。
 
 ## 可视化 / 定性结果
 
@@ -91,9 +91,9 @@ _暂无_
 
 *Preprint 2026* · [Paper](https://arxiv.org/abs/2609.34563)
 
-📷 _截图待补_
+<img src="figures/realvr-2026/fig3.png" width="800">
 
-> 💡 LVR 与 ReaLVR 的注意力矩阵并排对比，用框线标出关键读出区域，配合因果掩码的灰色三角，差异一目了然。
+> 💡 两张注意力矩阵并排，用彩色括号标出 Visual / Question / Latent / Answer 分区，框线 + 箭头注释直接点出“弱读出 vs 强读出”，红蓝发散色标配合灰色因果掩码，信息密度高但不乱。
 
 ## 表格
 
